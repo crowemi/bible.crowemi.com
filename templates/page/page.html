@@ -1,0 +1,127 @@
+{{define "page"}}
+<style>
+  .esv-passage {
+    color: #111827; /* gray-900 */
+    font-size: 1.125rem; /* text-lg */
+    line-height: 1.75rem; /* leading-7 */
+  }
+  
+  /* Hero-sized h2 */
+  .esv-passage h2.extra_text {
+    font-size: 3rem; /* text-5xl */
+    font-weight: 800; /* font-extrabold */
+    line-height: 1.1;
+    margin-bottom: 2rem; /* mb-8 */
+    color: #111827; /* gray-900 */
+    letter-spacing: -0.025em; /* tracking-tight */
+  }
+
+  .esv-passage h3 {
+    font-size: 1.5rem; /* text-5xl */
+    font-weight: 400; /* font-extrabold */
+    line-height: 1.1;
+    margin-bottom: 2rem; /* mb-8 */
+    color: #111827; /* gray-900 */
+    letter-spacing: -0.025em; /* tracking-tight */
+  }
+  
+  /* Responsive hero sizing */
+  @media (min-width: 640px) {
+    .esv-passage h2.extra_text {
+      font-size: 3.75rem; /* sm:text-6xl */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .esv-passage h2.extra_text {
+      font-size: 4.5rem; /* lg:text-7xl */
+    }
+  }
+  
+  /* Prose-style paragraphs */
+  .esv-passage p {
+    margin-bottom: 1.25rem; /* mb-5 */
+    line-height: 1.75; /* leading-7 */
+  }
+  
+  /* Verse numbers - subtle and small */
+  .esv-passage .verse-num {
+    font-size: 0.75rem; /* text-xs */
+    font-weight: 600; /* font-semibold */
+    color: #6b7280; /* gray-500 */
+    margin-right: 0.25rem;
+    vertical-align: super;
+    line-height: 0;
+  }
+  
+  /* Audio link - smaller, understated */
+  .esv-passage .audio {
+    font-size: 0.875rem; /* text-sm */
+    font-weight: 400;
+    color: #6b7280; /* gray-500 */
+  }
+  
+  /* Links */
+  .esv-passage .mp3link {
+    color: #2563eb; /* blue-600 */
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  
+  .esv-passage .mp3link:hover {
+    color: #1d4ed8; /* blue-700 */
+  }
+  
+  .esv-passage .copyright {
+    color: #6b7280; /* gray-500 */
+    font-size: 0.875rem;
+  }
+  
+  .esv-passage .copyright:hover {
+    color: #374151; /* gray-700 */
+  }
+  
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+    .esv-passage {
+      color: #f9fafb; /* gray-50 */
+    }
+    
+    .esv-passage h2.extra_text {
+      color: #f9fafb; /* gray-50 */
+    }
+
+    .esv-passage h3 {
+      color: #f9fafb; /* gray-50 */
+    }
+    
+    .esv-passage .verse-num {
+      color: #9ca3af; /* gray-400 */
+    }
+    
+    .esv-passage .audio {
+      color: #9ca3af; /* gray-400 */
+    }
+    
+    .esv-passage .mp3link {
+      color: #60a5fa; /* blue-400 */
+    }
+    
+    .esv-passage .mp3link:hover {
+      color: #93c5fd; /* blue-300 */
+    }
+    
+    .esv-passage .copyright {
+      color: #9ca3af; /* gray-400 */
+    }
+  }
+</style>
+<div class="container mx-auto px-4 bg-white py-12 sm:py-24 lg:px-8 dark:bg-gray-900">
+  <div class="esv-passage max-w-prose mx-auto">
+    {{ range .Passages }}
+    {{ . }}
+    {{ end }}
+</div>
+</div>
+{{template "base" .}}
+{{end}}
