@@ -2,7 +2,7 @@ module github.com/crowemi/bible.crowemi.com
 
 go 1.25.5
 
-require github.com/crowemi-io/crowemi-go-utils v1.1.0
+require github.com/crowemi-io/crowemi-go-utils v1.2.1
 
 require (
 	cloud.google.com/go v0.121.6 // indirect

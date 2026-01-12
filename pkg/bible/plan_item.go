@@ -1,7 +1,7 @@
 package bible
 
 type PlanItem struct {
-	PlanItemID string `firestore:"plan_item_id,omitempty"`
+	DocumentID string `firestore:"document_id,omitempty"`
 	Passage    string `firestore:"passage,omitempty"`
 	Date       string `firestore:"date,omitempty"`
 	Plan       string `firestore:"plan,omitempty"`

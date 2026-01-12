@@ -55,12 +55,12 @@ func main() {
 		}
 		defer fs.Close()
 
-		today := time.Now()
+		planItems := []bible.PlanItem{}
 		filters := []db.Filter{}
 		filter := db.Filter{
 			Field:    "date",
 			Operator: "==",
-			Value:    today.Format("January 2, 2006"),
+			Value:    time.Now().Format("January 2, 2006"),
 		}
 		filters = append(filters, filter)
 
@@ -75,6 +75,7 @@ func main() {
 
 		for idx, passage := range *passages {
 			if passage.Summary != "" {
+				planItems = append(planItems, passage)
 				continue
 			}
 			query := strings.Replace(passage.Passage, " ", ".", -1)
@@ -94,15 +95,21 @@ func main() {
 			passage.Summary = summary
 			(*passages)[idx] = passage
 			// write summary to firestore
-			// _, err = firestore.UpdateOne(context.TODO(), fs, Collection, passage.PlanItemID, update)
-			// if err != nil {
-			// 	// TODO: log
-			// 	http.Error(w, err.Error(), http.StatusInternalServerError)
-			// }
+			updates := []firestore.Update{}
+			updates = append(updates, firestore.Update{
+				Path:  "summary",
+				Value: summary,
+			})
+			_, err = firestore.UpdateOne(context.TODO(), fs, Collection, idx, updates)
+			if err != nil {
+				// TODO: log
+				http.Error(w, err.Error(), http.StatusInternalServerError)
+			}
+			planItems = append(planItems, passage)
 		}
 
 		data := data{
-			Scripture: *passages,
+			Scripture: planItems,
 		}
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 		page := config.Templates.Lookup("home")
