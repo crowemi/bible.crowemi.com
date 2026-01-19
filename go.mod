@@ -1,15 +1,17 @@
-module github.com/crowemi/bible.crowemi.com
+module github.com/crowemi-io/crowemi-bible
 
 go 1.25.5
 
-require github.com/crowemi-io/crowemi-go-utils v1.2.1
+require (
+	cloud.google.com/go/firestore v1.20.0
+	github.com/crowemi-io/crowemi-go-utils v1.2.3
+)
 
 require (
 	cloud.google.com/go v0.121.6 // indirect
 	cloud.google.com/go/auth v0.16.4 // indirect
 	cloud.google.com/go/auth/oauth2adapt v0.2.8 // indirect
 	cloud.google.com/go/compute/metadata v0.8.0 // indirect
-	cloud.google.com/go/firestore v1.20.0 // indirect
 	cloud.google.com/go/longrunning v0.6.7 // indirect
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/go-logr/logr v1.4.3 // indirect

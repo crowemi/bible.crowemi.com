@@ -5,20 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch file",
-            "type": "go",
-            "request": "launch",
-            "mode": "debug",
-            "program": "${file}"
-        },
-        {
             "name": "Launch Package",
             "type": "go",
             "request": "launch",
             "mode": "auto",
             "program": "${fileDirname}",
             "env": {
-                "CONFIG_PATH": "/Users/crowemi/code/bible.crowemi.com/.secret/config.json"
+                "CONFIG_PATH": "/Users/crowemi/code/crowemi-bible/.secret/config.json",
+                "RESOURCES_PATH": "/Users/crowemi/code/crowemi-bible/cmd/bible-loader/resources/"
             }
         }
     ]

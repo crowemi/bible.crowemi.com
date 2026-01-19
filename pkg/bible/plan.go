@@ -1,7 +1,11 @@
 package bible
 
+import "time"
+
 type Plan struct {
-	PlanID string     `firestore:"plan_id,omitempty"`
-	Name   string     `firestore:"name,omitempty"`
-	Items  []PlanItem `firestore:"items,omitempty"`
+	ID          string
+	Name        string    `firestore:"name,omitempty"`
+	Description string    `firestore:"description,omitempty"`
+	CreatedAt   time.Time `firestore:"created_at,omitempty"`
+	UpdatedAt   time.Time `firestore:"updated_at,omitempty"`
 }

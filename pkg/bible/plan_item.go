@@ -1,10 +1,15 @@
 package bible
 
+import "time"
+
 type PlanItem struct {
-	DocumentID string `firestore:"document_id,omitempty"`
-	Passage    string `firestore:"passage,omitempty"`
-	Date       string `firestore:"date,omitempty"`
-	Plan       string `firestore:"plan,omitempty"`
-	Summary    string `firestore:"summary,omitempty"`
-	Link       string `firestore:"link,omitempty"`
+	ID        string
+	PlanID    string    `firestore:"plan_id,omitempty"`
+	BookID    string    `firestore:"book_id,omitempty"`
+	ChapterID string    `firestore:"chapter_id,omitempty"`
+	ReadDate  string    `firestore:"read_date,omitempty"`
+	Summary   string    `firestore:"summary,omitempty"`
+	Query     string    `firestore:"query,omitempty"`
+	CreatedAt time.Time `firestore:"created_at,omitempty"`
+	UpdatedAt time.Time `firestore:"updated_at,omitempty"`
 }

@@ -10,8 +10,10 @@ cloud.google.com/go/firestore v1.20.0 h1:JLlT12QP0fM2SJirKVyu2spBCO8leElaW0OOtPm
 cloud.google.com/go/firestore v1.20.0/go.mod h1:jqu4yKdBmDN5srneWzx3HlKrHFWFdlkgjgQ6BKIOFQo=
 cloud.google.com/go/longrunning v0.6.7 h1:IGtfDWHhQCgCjwQjV9iiLnUta9LBCo8R9QmAFsS/PrE=
 cloud.google.com/go/longrunning v0.6.7/go.mod h1:EAFV3IZAKmM56TyiE6VAP3VoTzhZzySwI/YI1s/nRsY=
-github.com/crowemi-io/crowemi-go-utils v1.2.1 h1:acj88ij7M3pxgFT6GVcBy3DIwsOO3YIv99hgNAzriqA=
-github.com/crowemi-io/crowemi-go-utils v1.2.1/go.mod h1:A+JQSHTqytF2b2kAr6BWYQmj6XKbQ9IXGhso5KN8rAw=
+github.com/crowemi-io/crowemi-go-utils v1.2.2 h1:X2eVAeU/D4/Sdt2mIuqi1Ss1hiZi6sHFCeKelMRqYTU=
+github.com/crowemi-io/crowemi-go-utils v1.2.2/go.mod h1:A+JQSHTqytF2b2kAr6BWYQmj6XKbQ9IXGhso5KN8rAw=
+github.com/crowemi-io/crowemi-go-utils v1.2.3 h1:1FZFo1WnMT/LvCMNZGrO1UvC6imXM79qHr8MTdJwrF0=
+github.com/crowemi-io/crowemi-go-utils v1.2.3/go.mod h1:A+JQSHTqytF2b2kAr6BWYQmj6XKbQ9IXGhso5KN8rAw=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/felixge/httpsnoop v1.0.4 h1:NFTV2Zj1bL4mc9sqWACXbQFVBBg2W3GPvqp8/ESS2Wg=
