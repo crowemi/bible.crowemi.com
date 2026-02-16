@@ -2,7 +2,19 @@
 
 import { Plan, PlanItem } from "./plan";
 import { CONFIG } from "./config";
+import { addToSet, removeFromSet } from "./firestore";
+import { headers } from "next/headers";
 
+async function getUserId(): Promise<string> {
+    const headersList = await headers();
+    const forwardedFor = headersList.get("x-forwarded-for");
+    
+    if (forwardedFor) {
+        return forwardedFor.split(',')[0].trim();
+    }
+    
+    return "127.0.0.1"; // Default/Fallback
+}
 
 async function GetPlan(id?: string) : Promise<Plan[] | Plan> {
     let plans: Response = null as any;
@@ -36,4 +48,22 @@ async function GetPlanItem(planID: string) : Promise<PlanItem[]> {
     return [];
 }
 
-export { GetPlan, GetPlanItem };
+async function togglePlanItem(planItemId: string, isRead: boolean) {
+    const userId = await getUserId();
+    const collection = "plan_item";
+    
+    console.log(`Toggling plan item ${planItemId} for user ${userId} to ${isRead}`);
+    
+    try {
+        if (isRead) {
+            await addToSet(collection, planItemId, "CompletedBy", userId);
+        } else {
+            await removeFromSet(collection, planItemId, "CompletedBy", userId);
+        }
+    } catch (error) {
+        console.error("Error toggling plan item:", error);
+        throw error;
+    }
+}
+
+export { GetPlan, GetPlanItem, togglePlanItem, getUserId };
