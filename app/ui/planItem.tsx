@@ -2,13 +2,26 @@
 
 import { useState } from "react";
 import { PlanItem } from "../lib/plan";
+import { togglePlanItem } from "../lib/service";
 
-function PlanItemComponent(props: PlanItem) {
-  const [isRead, setIsRead] = useState(false);
+interface PlanItemComponentProps extends PlanItem {
+  currentUserId: string;
+}
+
+function PlanItemComponent(props: PlanItemComponentProps) {
+  const isCompleted = props.CompletedBy ? props.CompletedBy.includes(props.currentUserId) : false;
+  const [isRead, setIsRead] = useState(isCompleted);
 
 
-  function markRead() {
-    setIsRead((previousState) => { return !previousState; })
+  async function markRead() {
+    const newState = !isRead;
+    setIsRead(newState); // Optimistic update
+    try {
+        await togglePlanItem(props.PlanItemID, newState);
+    } catch (error) {
+        console.error("Failed to update read status:", error);
+        setIsRead(!newState); // Revert on failure
+    }
   }
 
   function renderReadStatus() {

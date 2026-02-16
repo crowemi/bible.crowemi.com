@@ -47,6 +47,7 @@ export type PlanItem = {
   };
   ReadDate: string;
   Summary?: string;
+  CompletedBy?: string[];
   CreatedAt: Date;
   UpdatedAt: Date;
 };

@@ -1,11 +1,11 @@
-import {GetPlanItem, GetPlan} from "../../lib/service";
+import {GetPlanItem, GetPlan, getUserId} from "../../lib/service";
 import PlanComponent from "../../ui/plan";
 import PlanItemComponent from "../../ui/planItem";
 import Link from "next/link";
 import { Plan, PlanItem } from "../../lib/plan";
 
 
-function renderPlanItem(planItems: PlanItem[]) {
+function renderPlanItem(planItems: PlanItem[], currentUserId: string) {
   if (planItems.length === 0) {
     return (
       <div className="flex items-center justify-center py-16">
@@ -26,7 +26,7 @@ function renderPlanItem(planItems: PlanItem[]) {
   }
   
   return planItems.map((planItem) => (
-    <PlanItemComponent key={planItem.PlanItemID} {...planItem} />
+    <PlanItemComponent key={planItem.PlanItemID} {...planItem} currentUserId={currentUserId} />
   ));
 }
 
@@ -39,6 +39,7 @@ export default async function Page({
   const id = (await params).id
   const plan = await GetPlan(id) as Plan;
   const planItems = await GetPlanItem(id);
+  const currentUserId = await getUserId();
 
   return (
     <div className="mx-auto dark:bg-gray-900">
@@ -53,7 +54,7 @@ export default async function Page({
             </p>
           </div>
         </div>
-        {renderPlanItem(planItems)}
+        {renderPlanItem(planItems, currentUserId)}
       </div>
     </div>
   );

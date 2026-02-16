@@ -1,4 +1,4 @@
-import { Firestore } from "@google-cloud/firestore";
+import { Firestore, FieldValue } from "@google-cloud/firestore";
 
 const db = new Firestore({
   projectId: "crowemi-io-dev",
@@ -13,6 +13,20 @@ export type Filter = {
 
 interface Document {
   id: string;
+}
+
+export async function addToSet(collection: string, id: string, field: string, value: string) {
+  const docRef = db.collection(collection).doc(id);
+  await docRef.update({
+      [field]: FieldValue.arrayUnion(value)
+  });
+}
+
+export async function removeFromSet(collection: string, id: string, field: string, value: string) {
+  const docRef = db.collection(collection).doc(id);
+  await docRef.update({
+      [field]: FieldValue.arrayRemove(value)
+  });
 }
 
 export async function get<T extends Document>(
